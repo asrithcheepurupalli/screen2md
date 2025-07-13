@@ -1,60 +1,74 @@
-# screen2md
+# Screen2MD
 
-This is a simple tool I made to convert screenshots into `.md`, `.txt`, or `.pdf` notes using OCR. It lets me pull text from class notes, code images, or random screenshots and save them as clean files.
-
-No fancy UI or anything — just drop images into the folder, run it, and you’re good.
-
----
+A simple CLI tool that converts screenshots or images with text into editable Markdown, PDF, or plain text files using OCR.
 
 ## Features
 
-- Converts `.png`, `.jpg`, `.jpeg` images into text
-- Output formats:
-  - Markdown (`.md`)
-  - Plain text (`.txt`)
-  - PDF (`.pdf`) with Unicode-safe font
-- Works on multiple images at once
-- Clean and human-readable output
+- Extracts text from `.png`, `.jpg`, `.jpeg`, `.webp` images using Tesseract OCR.
+- Supports Markdown, PDF, and TXT outputs.
+- Automatically timestamps and names your notes.
+- Lightweight and fully offline.
+- Option to convert specific files from the folder or all at once.
 
----
+## Folder Structure
 
-## How to use
+```
+screen2md/
+├── images/          # Place your screenshots here
+├── output/          # Converted files will be saved here
+├── main.py          # Main CLI script
+├── README.md
+└── requirements.txt
+```
 
-1. Put your screenshots inside the `screenshots/` folder  
-2. Make sure `DejaVuSans.ttf` is inside the `fonts/` folder  
-3. Run:
+## Requirements
 
-```bash
-python main.py
+Install dependencies:
 
- ---
- 
-# Requirements
+```
+pip install -r requirements.txt
+```
 
-Python 3.7+
-Tesseract OCR
-PIL (Pillow)
-fpdf2
-Install the Python packages:
+Also ensure Tesseract is installed on your system:
 
-pip install pytesseract pillow fpdf
-Also make sure Tesseract is installed on your system.
-On macOS:
-
+### macOS (Homebrew):
+```
 brew install tesseract
-Notes
+```
 
-PDF export needs fonts/DejaVuSans.ttf.
-You can download it from the DejaVu GitHub
-If you get weird OCR output, it’s probably the image quality
-It skips lines that are too long or break layout, but most normal stuff works fine
-Why I made this
+### Ubuntu/Debian:
+```
+sudo apt update
+sudo apt install tesseract-ocr
+```
 
-Mostly for myself — I got tired of typing from screenshots or converting notes manually.
-This does the job with minimum effort.
+### Windows:
+Download from https://github.com/tesseract-ocr/tesseract
 
-Author
+## Usage
 
-Made by Lok Sai Asrith Cheepurupalli
-asrithcheepurupalli.codes
-GitHub
+```
+python main.py
+```
+
+You'll be prompted to:
+- Choose the image(s) to convert
+- Select the output format (`md`, `txt`, or `pdf`)
+
+Converted files will be saved to the `output/` folder.
+
+## Why Use This?
+
+Whether you're documenting debugging sessions, saving notes from screenshots, or digitizing printed text, Screen2MD helps you extract and store that content in a clean, readable, and organized way — without lifting a finger to type it out.
+
+## Dependencies
+
+- Python 3.8+
+- pytesseract
+- Pillow
+- fpdf2
+
+## Author
+
+Lok Sai Asrith Cheepurupalli  
+https://asrithcheepurupalli.codes
